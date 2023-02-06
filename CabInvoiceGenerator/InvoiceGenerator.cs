@@ -12,6 +12,7 @@ namespace CabInvoiceGenerator
         public int CostPerMinute = 1;
         public int MinimumFare = 5;
         public int count;
+
         public double CalculateFare(double Distance, int Time)
         {
             count++;
@@ -24,8 +25,19 @@ namespace CabInvoiceGenerator
             foreach (MultipleRides rides in ride)
             {
                 totalfare = totalfare + CalculateFare(rides.Distance, rides.Time);
+
             }
             return totalfare;
+        }
+        public void InvoiceSummary(MultipleRides[] ride)
+        {
+            foreach (MultipleRides rides in ride)
+            {
+
+                Console.WriteLine("Distance Travelled :" + rides.Distance);
+                Console.WriteLine("Time Taken :" + rides.Time);
+                Console.WriteLine("Fare for ride is :" + CalculateFare(rides.Distance, rides.Time));
+            }
         }
     }
 }
